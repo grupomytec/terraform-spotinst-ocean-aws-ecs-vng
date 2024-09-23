@@ -143,3 +143,9 @@ variable "images" {
   default     = null
   description = "Array of objects (Image object, containing the id of the image used to launch instances.)"
 }
+
+variable "preferred_spot_types" {
+  type        = list(string)
+  default     = []
+  description = "Array of preferred spot types"
+}

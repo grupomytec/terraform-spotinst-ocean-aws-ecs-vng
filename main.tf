@@ -23,9 +23,10 @@ resource "spotinst_ocean_ecs_launch_spec" "ocean_ecs_launchspec" {
     }
   }
 
-  instance_types      = var.instance_types
-  restrict_scale_down = var.restrict_scale_down
-  subnet_ids          = var.subnet_ids
+  instance_types       = var.instance_types
+  preferred_spot_types = var.preferred_spot_types
+  restrict_scale_down  = var.restrict_scale_down
+  subnet_ids           = var.subnet_ids
 
   dynamic "attributes" {
     for_each = var.attributes == null ? {} : var.attributes
@@ -96,7 +97,7 @@ resource "spotinst_ocean_ecs_launch_spec" "ocean_ecs_launchspec" {
   dynamic "images" {
     for_each = var.images == null ? [] : var.images
     content {
-      image_id   = images.value["image_id"]
+      image_id = images.value["image_id"]
     }
   }
 }
